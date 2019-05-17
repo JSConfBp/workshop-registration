@@ -1,0 +1,48 @@
+{
+  "name": "workshop-registration",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "export NODE_ENV='development' ; nodemon index.js",
+    "clean": "rm -rf .next",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "NODE_ENV=production npx next build",
+    "heroku-postbuild": "npm run build",
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^1.19.0",
+    "redux-devtools-extension": "^2.13.8"
+  },
+  "dependencies": {
+    "@material-ui/core": "^3.9.2",
+    "@material-ui/icons": "^3.0.2",
+    "@weco/next-plugin-transpile-modules": "0.0.2",
+    "@zeit/next-sass": "^1.0.1",
+    "classnames": "^2.2.6",
+    "cookie-parser": "^1.4.4",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "hiredis": "^0.5.0",
+    "isomorphic-unfetch": "^3.0.0",
+    "jsrsasign": "^8.0.12",
+    "jws": "^3.2.2",
+    "memoize-one": "^5.0.0",
+    "moment": "^2.24.0",
+    "next": "^8.0.3",
+    "next-compose-plugins": "^2.1.1",
+    "next-redux-wrapper": "^3.0.0-alpha.1",
+    "node-sass": "^4.11.0",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
+    "react-jss": "^8.6.1",
+    "react-redux": "^6.0.1",
+    "redis": "^2.8.0",
+    "styled-jsx": "^3.2.1",
+    "universal-cookie": "^4.0.0",
+    "uuid": "^3.3.2"
+  }
+}
