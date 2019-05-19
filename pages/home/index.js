@@ -1,8 +1,6 @@
 import React from 'react'
 import fetch from 'isomorphic-unfetch'
 
-import Authenticated from '../../components/Auth'
-
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import Router from 'next/router'
@@ -135,6 +133,7 @@ class Index extends React.Component {
 			});
 
 			Router.push('/workshops')
+
 		} catch(e) {
 			this.setState({
 				error: true,
@@ -191,7 +190,6 @@ class Index extends React.Component {
 						<TextField
 							error={ this.state.error }
 							onChange={e => this.onChange(e)}
-							autoFocus
 							label="Ticket ID"
 							className={classes.textField}
 							margin="normal"
@@ -270,12 +268,10 @@ class Index extends React.Component {
 
 
 	static getInitialProps({ req, store, auth }) {
-		//console.log(auth);
-
 		return {}
 	}
 
 }
 
 
-export default Authenticated(withStyles(styles)(Index))
+export default withStyles(styles)(Index)

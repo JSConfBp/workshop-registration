@@ -3,7 +3,7 @@ const uuid = require('uuid/v4')
 const moment = require('moment')
 const { promisify } = require('util')
 const fetch = require('isomorphic-unfetch')
-const checkUrl = process.env.TITO_CHECK_URL 
+const checkUrl = process.env.TITO_CHECK_URL
 const store = require('./store')
 const tokenAuth = require('./token')
 
@@ -26,8 +26,8 @@ module.exports = async (req, res) => {
 	const user = await store.get(ticketId);
 
 	if (user) {
-		const data = await store.get(user);
-		sendToken(res, data)
+		const data = await store.hget('users', user);
+		sendToken(res, JSON.parse(data))
 		return
 	}
 
@@ -52,7 +52,7 @@ module.exports = async (req, res) => {
 	}
 
 	store.set(ticketId, id)
-	store.set(id, data)
+	store.hset('users', id, JSON.stringify(data))
 
 	sendToken(res, data)
 }

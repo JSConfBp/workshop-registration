@@ -1,10 +1,13 @@
 const next = require('next')
 const express = require('express')
 const cookieParser = require('cookie-parser')
+const routeCache = require('route-cache');
+
 const router = require('./router')
 const errorHandler = require('./errorHandler')
 const loginHandler = require('./loginHandler')
 const userHandler = require('./userHandler')
+const seatHandler = require('./seatHandler')
 
 const dev = process.env.NODE_ENV !== 'production'
 
@@ -20,6 +23,7 @@ module.exports = function (getRoutes, config) {
 				const server = express()
 				server.use(cookieParser())
 				server.nextConfig = app.nextConfig
+				server.routeCache = routeCache
 
 				return server
 			})
@@ -30,7 +34,7 @@ module.exports = function (getRoutes, config) {
 		server.post('/api/login', loginHandler)
 		server.get('/api/user', userHandler.get)
 		server.post('/api/user', userHandler.post)
-
+		server.get('/api/seats', routeCache.cacheSeconds(60), seatHandler.get)
 		return server
 	}
 

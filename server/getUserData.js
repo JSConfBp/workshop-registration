@@ -5,22 +5,10 @@ const tokenAuth = require('./token')
 module.exports = async (token) => {
 	const payload = await tokenAuth.decode(token)
 	const id = payload.sub
-	const data = await store.get(id);
-
-	const {
-		ticketId,
-		updated_at,
-		workshop,
-		created_at
-	} = data
-
+	const data = JSON.parse(await store.hget('users', id))
+	const result = Object.assign({}, data)
 	data.updated_at = moment().unix()
 	store.set(id, data);
 
-	return {
-		ticketId,
-		updated_at,
-		workshop,
-		created_at
-	};
+	return result
 }

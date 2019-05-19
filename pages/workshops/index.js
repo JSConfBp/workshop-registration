@@ -1,29 +1,16 @@
 import React from 'react'
 import fetch from 'isomorphic-unfetch'
-import classNames from 'classnames'
-import getConfig from 'next/config'
-
-
-import { KJUR } from 'jsrsasign'
-
-import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography'
+import { withStyles } from '@material-ui/core/styles'
 import Router from 'next/router'
-import Paper from '@material-ui/core/Paper';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import Modal from '@material-ui/core/Modal';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import Cookies from 'universal-cookie';
+import Paper from '@material-ui/core/Paper'
+import Snackbar from '@material-ui/core/Snackbar'
 
+import Notification from '../../components/Notification'
+import WorkshopList from '../../components/WorkshopList'
 
-
-
+const successMessage = 'Your selection was saved';
+const warningMessage = 'Sorry, there was an error saving your selection. Try again later, or contact us';
 
 const classes = theme => ({
 	root: {
@@ -46,7 +33,7 @@ const classes = theme => ({
 		textAlign: 'left',
 		margin: '0 auto',
 		marginTop: '4rem',
-		maxWidth: '42rem',
+		//maxWidth: '42rem',
 		padding: '2rem',
 	},
 	text: {
@@ -91,34 +78,66 @@ const classes = theme => ({
 
 class Workshops extends React.Component {
 
+	state = {
+		workshop: '',
+
+		saved: false,
+		saveState: 'success',
+		saveMessage: successMessage
+	}
 	constructor (props) {
 		super(props)
 
-		this.state = {
+		this.state.workshop = props.user.workshop
+	}
 
+	closeNotification() {
+		this.setState({ saved: false });
+	}
+
+	async onWorkshopSelect (workshop) {
+		this.setState({
+			workshop
+		})
+
+		try {
+			await fetch(
+				'/api/user',
+				{
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({
+						workshop
+					})
+				}
+			).then(response => {
+				if (response.status !== 200) throw new Error(warningMessage)
+			})
+			this.setState({
+				saved: true,
+				saveState: 'success',
+			})
+		} catch(e) {
+			this.setState({
+				saved: true,
+				saveState: 'warning',
+				saveMessage: e.message || warningMessage
+			})
 		}
 	}
 
-	async updateCfp(cfp) {
-		const stats = await getStats(this.props.auth.token)
-		const state = Object.assign({}, {
-			stats,
-			cfp
-		})
-		this.setState(state)
-	}
-
 	render() {
-
 		const { classes, user } = this.props;
-		return (<div className={classes.root}>
 
+		return (<><div className={classes.root}>
 			<div className={classes.paper}>
 				<Typography className={classes.title} variant="h2">
 					JSConf Budapest 2019<br />
 					Workshop Registration
 				</Typography>
-	
+
 				<Paper className={classes.area} elevation={1}>
 					<Typography variant="h5" className={classes.text}>
 						Great to see you {user.ticketId}!
@@ -130,9 +149,31 @@ class Workshops extends React.Component {
 						joined our conference since your last visit.
 					</Typography>
 
+					<WorkshopList
+						user={ user }
+						workshop={ this.state.workshop }
+						onSelect={ ws => this.onWorkshopSelect(ws) }
+					/>
 				</Paper>
 			</div>
-		</div>)
+		</div>
+
+		<Snackbar
+				anchorOrigin={{
+					vertical: 'bottom',
+					horizontal: 'center',
+				}}
+				open={this.state.saved}
+				autoHideDuration={3000}
+				onClose={e => this.closeNotification()}
+			>
+				<Notification
+					onClose={e => this.closeNotification()}
+					variant={this.state.saveState}
+					message={this.state.saveMessage}
+				/>
+			</Snackbar>
+		</>)
 	}
 
 	static async getInitialProps({ req, res, store, auth }) {
@@ -144,7 +185,7 @@ class Workshops extends React.Component {
 						if (response.status !== 200) {
 							throw new Error('Unauthorized')
 						}
-						return resposne
+						return response
 					})
 					.then(response => response.json())
 
@@ -152,7 +193,9 @@ class Workshops extends React.Component {
 					user
 				}
 			} catch (e) {
-				Router.push('/')
+				console.log(e);
+
+				Router.push('/home', '/')
 			}
 		} else {
 			try {
