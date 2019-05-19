@@ -85,6 +85,7 @@ class Workshops extends React.Component {
 		saveState: 'success',
 		saveMessage: successMessage
 	}
+
 	constructor (props) {
 		super(props)
 
@@ -94,7 +95,6 @@ class Workshops extends React.Component {
 	closeNotification() {
 		this.setState({ saved: false });
 	}
-
 
 	async componentDidMount() {
 		this.fetchSeats()
@@ -155,38 +155,42 @@ class Workshops extends React.Component {
 
 	render() {
 		const { classes, user } = this.props;
-
 		const { seats, selectedWorkshop } = this.state
 
-		return (<><div className={classes.root}>
-			<div className={classes.paper}>
-				<Typography className={classes.title} variant="h2">
-					JSConf Budapest 2019<br />
-					Workshop Registration
-				</Typography>
+		console.log(user)
 
-				<Paper className={classes.area} elevation={1}>
-					<Typography variant="h5" className={classes.text}>
-						Great to see you {user.ticketId}!
+
+		return (<>
+			<div className={classes.root}>
+				<div className={classes.paper}>
+					<Typography className={classes.title} variant="h2">
+						JSConf Budapest 2019<br />
+						Workshop Registration
 					</Typography>
 
-					<Typography component="p" className={classes.text}>
-						Here are the current list of workshops available. You can pick one, or update your preferred
-						workshop and choose another one, if there are enough seats. Workshops marked with "NEW" were added to the
-						conference since your last visit here.
-					</Typography>
+					<Paper className={classes.area} elevation={1}>
+						<Typography variant="h5" className={classes.text}>
+							Great to see you {user.ticketId}!
+						</Typography>
 
-					<WorkshopList
-						user={ user }
-						workshop={ selectedWorkshop }
-						seats={ seats }
-						onSelect={ ws => this.onWorkshopSelect(ws) }
-					/>
-				</Paper>
+						<Typography component="p" className={classes.text}>
+							Here are the current list of workshops available. You can pick one, or update your preferred
+							workshop and choose another one, if there are enough seats. Workshops marked with "NEW" were added to the
+							conference since your last visit here.
+						</Typography>
+
+						<WorkshopList
+							user={ user }
+							workshop={ selectedWorkshop }
+							seats={ seats }
+							onSelect={ ws => this.onWorkshopSelect(ws) }
+							lastVisitedAt={user.updatedAt}
+						/>
+					</Paper>
+				</div>
 			</div>
-		</div>
 
-		<Snackbar
+			<Snackbar
 				anchorOrigin={{
 					vertical: 'bottom',
 					horizontal: 'center',
@@ -246,14 +250,11 @@ class Workshops extends React.Component {
 				return {
 					user
 				}
-
 			} catch (e) {
 				res.redirect('/');
 			}
 		}
-
 	}
 }
-
 
 export default withStyles(classes)(Workshops)

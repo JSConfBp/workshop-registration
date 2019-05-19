@@ -1,6 +1,5 @@
 import React from 'react'
 import classNames from 'classnames'
-import fetch from 'isomorphic-unfetch'
 import { withStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import Radio from '@material-ui/core/Radio';
@@ -48,52 +47,67 @@ const classes = theme => ({
 
 class WorkshopList extends React.Component {
 
-
 	onWorkshopSelect (workshop) {
 		this.props.onSelect(workshop)
 	}
 
 	render() {
-		const { classes, seats = {}, workshop: selectedWorkshop } = this.props
+		const {
+			classes,
+			seats = {},
+			lastVisitedAt,
+			workshop: selectedWorkshop
+		} = this.props
+
+		const visited = new Date(lastVisitedAt * 1000)
 
 		return (<div>
 			<List className={classes.root}>
-			{Object.entries(workshopData).map(([ workshopId, workshop], i) => (
-				<ListItem
-					key={`ws-${i}`}
-					role={undefined}
-					button
-					className={classNames(classes.item, selectedWorkshop === workshopId ? classes.selected : '')}
-					onClick={() => this.onWorkshopSelect(workshopId) }
-				>
-					<Radio
-						color="primary"
-						checked={selectedWorkshop === workshopId}
-					/>
-					<ListItemText
-						primary={
-							<>
-							 	<Badge color="secondary" badgeContent={'new'} classes={{ badge: classes.badge }}>
-									<Typography variant="h6" className={classes.workshopTitle}>
-										{ workshop.title }
+			{Object.entries(workshopData)
+				.sort(([ workshopId, workshop ]) => {
+					return (lastVisitedAt * 1000) - (+new Date(workshop.created))
+				})
+				.map(([ workshopId, workshop ], i) => {
+
+					const created = new Date(workshop.created)
+					const title = (<Typography variant="h6" className={classes.workshopTitle}>
+						{ workshop.title }
+					</Typography>)
+
+					return (<ListItem
+						key={`ws-${i}`}
+						role={undefined}
+						button
+						className={classNames(classes.item, selectedWorkshop === workshopId ? classes.selected : '')}
+						onClick={() => this.onWorkshopSelect(workshopId) }
+					>
+						<Radio
+							color="primary"
+							checked={selectedWorkshop === workshopId}
+						/>
+						<ListItemText
+							primary={
+								<>
+									{ visited < created ? (<Badge color="secondary" badgeContent={'new'} classes={{ badge: classes.badge }}>
+										{title}
+									</Badge>) : (title)}
+								</>
+							}
+							secondary={
+								<>
+									<Typography component="span" className={classes.workshopDescription}>
+										{ workshop.short_description }
 									</Typography>
-      							</Badge>
-							</>
-						}
-						secondary={
-							<>
-								<Typography component="span" className={classes.workshopDescription}>
-									{ workshop.short_description }
-								</Typography>
-							</>
-						}
-					/>
-					<ListItemSecondaryAction className={classes.seats}>
-						{ seats[workshopId] ? (<Seats {...seats[workshopId]} />) : ('') }
-          			</ListItemSecondaryAction>
-				</ListItem>
-			))}
-      		</List>
+								</>
+							}
+						/>
+						<ListItemSecondaryAction className={classes.seats}>
+							{ seats[workshopId] ? (<Seats {...seats[workshopId]} />) : ('') }
+						</ListItemSecondaryAction>
+					</ListItem>)
+				})
+			}
+		</List>
 
 		</div>);
 	}
