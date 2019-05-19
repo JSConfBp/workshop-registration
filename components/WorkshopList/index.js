@@ -47,32 +47,13 @@ const classes = theme => ({
 
 class WorkshopList extends React.Component {
 
-	async componentDidMount() {
-
-		this.abortSignal = new AbortController();
-
-		try {
-			const seats = await fetch('/api/seats', {
-				method: 'GET',
-				signal: this.abortSignal.signal,
-			}).then(response => response.json())
-
-			console.log(seats)
-		} catch (e) {
-			console.error('Failed to fetch seats', e)
-		}
-	}
-
-	componentWillUnmount() {
-		this.abortSignal.abort();
-	}
 
 	onWorkshopSelect (workshop) {
 		this.props.onSelect(workshop)
 	}
 
 	render() {
-		const { classes, workshop: selectedWorkshop } = this.props
+		const { classes, seats = {}, workshop: selectedWorkshop } = this.props
 
 		return (<div>
 			<List className={classes.root}>
@@ -106,7 +87,7 @@ class WorkshopList extends React.Component {
 						}
 					/>
 					<ListItemSecondaryAction className={classes.seats}>
-         				<Seats value={ 30 } />
+						{ seats[workshopId] ? (<Seats {...seats[workshopId]} />) : ('') }
           			</ListItemSecondaryAction>
 				</ListItem>
 			))}

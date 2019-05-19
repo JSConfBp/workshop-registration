@@ -79,8 +79,8 @@ const classes = theme => ({
 class Workshops extends React.Component {
 
 	state = {
-		workshop: '',
-
+		selectedWorkshop: '',
+		seats: {},
 		saved: false,
 		saveState: 'success',
 		saveMessage: successMessage
@@ -95,9 +95,35 @@ class Workshops extends React.Component {
 		this.setState({ saved: false });
 	}
 
+
+	async componentDidMount() {
+		this.fetchSeats()
+	}
+
+	componentWillUnmount() {
+		this.abortSignal.abort();
+	}
+
+	async fetchSeats () {
+		this.abortSignal = new AbortController();
+		try {
+			const seats = await fetch('/api/seats', {
+				method: 'GET',
+				signal: this.abortSignal.signal,
+			}).then(response => response.json())
+
+			console.log(seats)
+			this.setState({
+				seats
+			})
+		} catch (e) {
+			console.error('Failed to fetch seats', e)
+		}
+	}
+
 	async onWorkshopSelect (workshop) {
 		this.setState({
-			workshop
+			selectedWorkshop: workshop
 		})
 
 		try {
@@ -119,6 +145,7 @@ class Workshops extends React.Component {
 				saved: true,
 				saveState: 'success',
 			})
+			this.fetchSeats()
 		} catch(e) {
 			this.setState({
 				saved: true,
@@ -130,6 +157,8 @@ class Workshops extends React.Component {
 
 	render() {
 		const { classes, user } = this.props;
+
+		const { seats, selectedWorkshop } = this.state
 
 		return (<><div className={classes.root}>
 			<div className={classes.paper}>
@@ -151,7 +180,8 @@ class Workshops extends React.Component {
 
 					<WorkshopList
 						user={ user }
-						workshop={ this.state.workshop }
+						workshop={ selectedWorkshop }
+						seats={ seats }
 						onSelect={ ws => this.onWorkshopSelect(ws) }
 					/>
 				</Paper>

@@ -26,24 +26,31 @@ const styles = theme => ({
   });
 
 
-class CircularStatic extends React.Component {
+class Seats extends React.Component {
 	state = {
 	  completed: 0,
 	};
 
 	render() {
-	  const { classes, value = 0 } = this.props;
-	  return (
-		<div className={classes.seats}>
+		const { classes, seats = 0, taken = 0 } = this.props;
+
+		let value = 0
+
+		if (seats > 0) {
+			value = Math.round((taken / seats) * 100)
+		}
+
+	  return (<div className={classes.seats}>
 				<CircularProgress className={classes.value} variant="static" value={ value } size={'3rem'} />
 		  	<CircularProgress className={classes.bg} variant="static" value={100} size={'3rem'} />
-		</div>
-	  );
+		</div>);
 	}
-  }
-  
-  CircularStatic.propTypes = {
+}
+
+Seats.propTypes = {
 	classes: PropTypes.object.isRequired,
-  };
-  
-  export default withStyles(styles)(CircularStatic);
+	seats: PropTypes.number,
+	taken: PropTypes.number,
+};
+
+  export default withStyles(styles)(Seats);
