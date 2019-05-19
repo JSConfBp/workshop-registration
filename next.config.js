@@ -20,8 +20,6 @@ const nextConfig = {
 
 	publicRuntimeConfig: {
 		asset_url: '',
-		api_url: process.env.API_URL,
-		nonce_state: process.env.NONCE,
 	},
 
 	exportPathMap: routing,

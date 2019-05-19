@@ -60,10 +60,10 @@ module.exports.post = async (req, res) => {
 
 		await store.hset('users', id, JSON.stringify(saveData))
 		routeCache.removeCache('/api/seats');
-		
+
 		res.send('')
 	} catch (e) {
-		console.log(e);
+		console.error(e);
 
 		res.status(403)
 		res.send(e.message)

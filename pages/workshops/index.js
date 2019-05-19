@@ -111,8 +111,6 @@ class Workshops extends React.Component {
 				method: 'GET',
 				signal: this.abortSignal.signal,
 			}).then(response => response.json())
-
-			console.log(seats)
 			this.setState({
 				seats
 			})
@@ -223,8 +221,7 @@ class Workshops extends React.Component {
 					user
 				}
 			} catch (e) {
-				console.log(e);
-
+				console.error(e);
 				Router.push('/home', '/')
 			}
 		} else {
