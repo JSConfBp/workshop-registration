@@ -88,7 +88,7 @@ class Workshops extends React.Component {
 	constructor (props) {
 		super(props)
 
-		this.state.workshop = props.user.workshop
+		this.state.selectedWorkshop = props.user.workshop
 	}
 
 	closeNotification() {
