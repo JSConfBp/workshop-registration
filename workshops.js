@@ -16,5 +16,5 @@ module.exports = {
 		seats: 30,
 		title: "Integration Driven Development",
 		short_description: "As the integration economy flourishes, authoring apps has never been easier. Tasks such as authentication, notifications, and search (to name a few) are now accessible via thousands of publicly available APIs. However, JavaScript is still a DIY language, with no native support for integrations and few established best practices. At the end of this workshop, you will be able to manage integrations as confidently as your own JavaScript code, helping you build resilient and robust apps around your core business logic.",
-	}
+	},
 }

@@ -67,8 +67,8 @@ class WorkshopList extends React.Component {
 		return (<div>
 			<List className={classes.root}>
 			{Object.entries(workshopData)
-				.sort(([ workshopId, workshop ]) => {
-					return (lastVisitedAt * 1000) - (+new Date(workshop.created))
+				.sort(([ workshopIdA, workshopA ], [ workshopIdB, workshopB ]) => {
+					return (+new Date(workshopB.created)) - (+new Date(workshopA.created))
 				})
 				.map(([ workshopId, workshop ], index, allItems) => {
 
