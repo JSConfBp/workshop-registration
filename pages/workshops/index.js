@@ -5,6 +5,8 @@ import { withStyles } from '@material-ui/core/styles'
 import Router from 'next/router'
 import Paper from '@material-ui/core/Paper'
 import Snackbar from '@material-ui/core/Snackbar'
+import Divider from '@material-ui/core/Divider'
+import Button from '@material-ui/core/Button'
 
 import Notification from '../../components/Notification'
 import WorkshopList from '../../components/WorkshopList'
@@ -72,6 +74,10 @@ const classes = theme => ({
 	},
 	media: {
 		height: 110,
+	},
+	resetArea: {
+		paddingTop: theme.spacing.unit * 8,
+		textAlign: 'center'
 	},
 });
 
@@ -153,6 +159,37 @@ class Workshops extends React.Component {
 		}
 	}
 
+	async onUnregister () {
+		this.setState({
+			selectedWorkshop: ''
+		})
+
+		try {
+			await fetch(
+				'/api/user',
+				{
+					method: 'DELETE',
+					headers: {
+						'Content-Type': 'application/json'
+					}
+				}
+			).then(response => {
+				if (response.status !== 200) throw new Error(warningMessage)
+			})
+			this.setState({
+				saved: true,
+				saveState: 'success',
+			})
+			this.fetchSeats()
+		} catch(e) {
+			this.setState({
+				saved: true,
+				saveState: 'warning',
+				saveMessage: e.message || warningMessage
+			})
+		}
+	}
+
 	render() {
 		const { classes, user } = this.props;
 		const { seats, selectedWorkshop } = this.state
@@ -183,6 +220,18 @@ class Workshops extends React.Component {
 							onSelect={ ws => this.onWorkshopSelect(ws) }
 							lastVisitedAt={user.updatedAt}
 						/>
+
+						<Divider variant="middle" />
+
+						<div className={classes.resetArea}>
+							<Button
+								variant="outlined"
+								className={classes.button}
+								onClick={ e => this.onUnregister() }
+							>
+								Reset your selection, unregister from workshops
+							</Button>
+						</div>
 					</Paper>
 				</div>
 			</div>

@@ -34,6 +34,9 @@ const classes = theme => ({
 	selected: {
 		backgroundColor: '#f5f5f5'
 	},
+	lastItem: {
+		borderBottom: 'none'
+	},
 	seats: {
 		paddingRight: '1rem'
 	},
@@ -67,18 +70,21 @@ class WorkshopList extends React.Component {
 				.sort(([ workshopId, workshop ]) => {
 					return (lastVisitedAt * 1000) - (+new Date(workshop.created))
 				})
-				.map(([ workshopId, workshop ], i) => {
+				.map(([ workshopId, workshop ], index, allItems) => {
 
 					const created = new Date(workshop.created)
 					const title = (<Typography variant="h6" className={classes.workshopTitle}>
 						{ workshop.title }
 					</Typography>)
 
+					const selectedItemClass = (selectedWorkshop === workshopId) ? classes.selected : '';
+					const lastItemClass = (allItems.length - 1 === index) ? classes.lastItem : ''
+
 					return (<ListItem
-						key={`ws-${i}`}
+						key={`ws-${index}`}
 						role={undefined}
 						button
-						className={classNames(classes.item, selectedWorkshop === workshopId ? classes.selected : '')}
+						className={classNames(classes.item, selectedItemClass, lastItemClass)}
 						onClick={() => this.onWorkshopSelect(workshopId) }
 					>
 						<Radio

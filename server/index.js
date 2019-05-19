@@ -34,6 +34,7 @@ module.exports = function (getRoutes, config) {
 		server.post('/api/login', loginHandler)
 		server.get('/api/user', userHandler.get)
 		server.post('/api/user', userHandler.post)
+		server.delete('/api/user', userHandler.delete)
 		server.get('/api/seats', routeCache.cacheSeconds(60), seatHandler.get)
 		return server
 	}

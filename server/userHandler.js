@@ -69,3 +69,40 @@ module.exports.post = async (req, res) => {
 		res.send(e.message)
 	}
 }
+
+
+module.exports.delete = async (req, res) => {
+	let {
+		token
+	} = req.cookies
+
+	if (!token) {
+		token = req.headers.authorization.replace('Bearer ', '')
+	}
+
+	if (!token) {
+		res.sendStatus(403)
+		return
+	}
+
+	try {
+		const data = await getUserData(token)
+		const { routeCache } = req.app
+		const { id } = data
+
+		const saveData = Object.assign({}, data, {
+			updated_at: moment().unix(),
+			workshop: ''
+		})
+
+		await store.hset('users', id, JSON.stringify(saveData))
+		routeCache.removeCache('/api/seats');
+
+		res.send('')
+	} catch (e) {
+		console.error(e);
+
+		res.status(403)
+		res.send(e.message)
+	}
+}
