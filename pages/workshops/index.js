@@ -93,7 +93,7 @@ class Workshops extends React.Component {
 	}
 
 	closeNotification() {
-		this.setState({ saved: false });
+		this.setState({ saved: false })
 	}
 
 	async componentDidMount() {
@@ -101,7 +101,7 @@ class Workshops extends React.Component {
 	}
 
 	componentWillUnmount() {
-		this.abortSignal.abort();
+		this.abortSignal.abort()
 	}
 
 	async fetchSeats () {
@@ -156,9 +156,6 @@ class Workshops extends React.Component {
 	render() {
 		const { classes, user } = this.props;
 		const { seats, selectedWorkshop } = this.state
-
-		console.log(user)
-
 
 		return (<>
 			<div className={classes.root}>
