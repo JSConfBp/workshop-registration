@@ -19,7 +19,7 @@ const styles = theme => ({
 	value: {
 		zIndex: '2',
 		position: 'absolute',
-		color: '#555',
+
 		width: '3rem',
 	  height: '3rem',
 	}
@@ -41,7 +41,7 @@ class Seats extends React.Component {
 		}
 
 	  return (<div className={classes.seats}>
-				<CircularProgress className={classes.value} variant="static" value={ value } size={'3rem'} />
+				<CircularProgress color={ classes.value > 75 ? 'primary' : 'secondary'} className={classes.value} variant="static" value={ value } size={'3rem'} />
 		  	<CircularProgress className={classes.bg} variant="static" value={100} size={'3rem'} />
 		</div>);
 	}

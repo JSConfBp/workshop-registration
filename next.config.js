@@ -3,7 +3,6 @@ const sass = require('@zeit/next-sass')
 const routing = require('./routing')
 const withPlugins = require('next-compose-plugins');
 
-
 const sassConfig = {
 	cssModules: false,
 	cssLoaderOptions: {

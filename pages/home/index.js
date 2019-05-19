@@ -217,7 +217,7 @@ class Index extends React.Component {
 						{ this.state.loading ? (<>
 							<CircularProgress className={classes.progress} />
 							</>) :
-						(<Button variant="contained" color="primary" className={classes.button} onClick={e => this.onSubmit(e) }>
+						(<Button variant="contained" color="secondary" className={classes.button} onClick={e => this.onSubmit(e) }>
 							Login
 						</Button>)}
 					</div>)}
@@ -253,10 +253,10 @@ class Index extends React.Component {
 					/>
 				</CardActionArea>
 				<CardActions>
-					<Button size="small" color="primary" onClick={ e => this.onModalClose() }>
+					<Button size="small" color="secondary" onClick={ e => this.onModalClose() }>
 						Got it, thanks
 					</Button>
-					<Button size="small" color="primary">
+					<Button size="small" color="secondary">
 						<a href="mailto:team@jsconfbp.com?subject=Workshop HELP, I can't find my ticket id!">Help!</a>
 					</Button>
 				</CardActions>

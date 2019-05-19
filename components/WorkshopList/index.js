@@ -23,7 +23,7 @@ const classes = theme => ({
 	workshopTitle: {
 		marginTop: '1rem',
 		marginBottom: '1rem',
-		paddingRight: '1rem',
+		paddingRight: '4rem',
 	},
 	workshopDescription: {
 	},
@@ -33,13 +33,14 @@ const classes = theme => ({
 		paddingBottom: '2rem',
 	},
 	selected: {
-		backgroundColor: '#eee'
+		backgroundColor: '#f5f5f5'
 	},
 	seats: {
 		paddingRight: '1rem'
 	},
 	badge: {
-		marginTop: '1rem',
+		marginTop: '2rem',
+		marginRight: '2rem',
 		padding: '0 .7rem'
 	}
 
@@ -66,6 +67,7 @@ class WorkshopList extends React.Component {
 					onClick={() => this.onWorkshopSelect(workshopId) }
 				>
 					<Radio
+						color="primary"
 						checked={selectedWorkshop === workshopId}
 					/>
 					<ListItemText

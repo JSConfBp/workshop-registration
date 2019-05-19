@@ -172,8 +172,8 @@ class Workshops extends React.Component {
 
 					<Typography component="p" className={classes.text}>
 						Here are the current list of workshops available. You can pick one, or update your preferred
-						workshop and choose another one, if there are enough seats. We'll mark you the workshops that
-						joined our conference since your last visit.
+						workshop and choose another one, if there are enough seats. Workshops marked with "NEW" were added to the
+						conference since your last visit here.
 					</Typography>
 
 					<WorkshopList
