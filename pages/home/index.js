@@ -29,16 +29,30 @@ const styles = theme => ({
 		margin: '0 auto',
 		marginTop: theme.spacing.unit * 5,
 		marginBottom: theme.spacing.unit * 5,
+		[theme.breakpoints.down('sm')]: {
+			width: '100vw',
+			marginTop: theme.spacing.unit * 3,
+			marginBottom: theme.spacing.unit * 3,
+		},
 	}),
 	title: {
 		marginBottom: theme.spacing.unit * 3,
 		lineHeight: '5rem',
+		[theme.breakpoints.down('sm')]: {
+			fontSize: '2rem',
+			lineHeight: '2.3rem',
+			marginBottom: theme.spacing.unit * 1,
+		}
 	},
 	area: {
 		margin: '0 auto',
 		marginTop: '4rem',
 		maxWidth: '42rem',
 		padding: '2rem',
+		[theme.breakpoints.down('sm')]: {
+			padding: '1rem',
+			marginTop: '2rem',
+		},
 	},
 	text: {
 		marginBottom: '1rem',
@@ -57,6 +71,10 @@ const styles = theme => ({
 		width: theme.spacing.unit * 50,
 		backgroundColor: theme.palette.background.paper,
 		padding: theme.spacing.unit * 4,
+
+		[theme.breakpoints.down('sm')]: {
+			width: '100vw'
+		}
 	},
 	retry: {
 		marginTop: '-1rem',
@@ -70,12 +88,19 @@ const styles = theme => ({
 		left: '50%',
 		top: '50%',
 		transform: 'translate(-50%, -50%)',
+		[theme.breakpoints.down('sm')]: {
+			width: '100vw'
+		}
 	},
 	helpText: {
 		marginBottom: '1rem',
 	},
 	media: {
 		height: 110,
+		[theme.breakpoints.down('sm')]: {
+			height: 90,
+			marginBottom: '1rem',
+		}
 	},
 });
 

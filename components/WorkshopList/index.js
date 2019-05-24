@@ -15,21 +15,45 @@ import workshopData from '../../workshops'
 
 const classes = theme => ({
 	root: {
-	  ...theme.mixins.gutters(),
-	  paddingTop: theme.spacing.unit * 2,
-	  paddingBottom: theme.spacing.unit * 2,
+	  	...theme.mixins.gutters(),
+	  	paddingTop: theme.spacing.unit * 2,
+	  	paddingBottom: theme.spacing.unit * 2,
+	  	[theme.breakpoints.down('sm')]: {
+			paddingTop: theme.spacing.unit,
+			paddingBottom: theme.spacing.unit,
+			paddingLeft: 0,
+			paddingRight: 0
+		}
 	},
 	workshopTitle: {
 		marginTop: '1rem',
 		marginBottom: '1rem',
 		paddingRight: '4rem',
+		[theme.breakpoints.down('sm')]: {
+			fontSize: '.9rem',
+			paddingRight: '0rem',
+			marginBottom: '.5rem',
+		},
 	},
 	workshopDescription: {
+		[theme.breakpoints.down('sm')]: {
+			display: 'none'
+		},
 	},
 	item: {
 		paddingRight: '6rem',
 		borderBottom: '1px solid #ddd',
 		paddingBottom: '2rem',
+		[theme.breakpoints.down('sm')]: {
+			paddingRight: 0,
+			paddingLeft: 0,
+			paddingBottom: '1rem',
+		},
+	},
+	itemText: {
+		[theme.breakpoints.down('sm')]: {
+			paddingRight: 0
+		},
 	},
 	selected: {
 		backgroundColor: '#f5f5f5'
@@ -44,9 +68,27 @@ const classes = theme => ({
 		marginTop: '2rem',
 		marginRight: '2rem',
 		padding: '0 .7rem'
+	},
+	seats: {
+		[theme.breakpoints.down('sm')]: {
+			display: 'none'
+		}
+	},
+	shortSeats: {
+		display: 'none',
+		fontSize: '.8rem',
+		[theme.breakpoints.down('sm')]: {
+			display: 'inline'
+		}
 	}
-
 });
+
+
+const ShortSeats = withStyles(classes)(({classes, seats = 0, taken = 0}) => {
+	return (<span className={classes.shortSeats}>{`Seats ${seats} / ${taken}`}</span>)
+})
+
+
 
 class WorkshopList extends React.Component {
 
@@ -92,6 +134,7 @@ class WorkshopList extends React.Component {
 							checked={selectedWorkshop === workshopId}
 						/>
 						<ListItemText
+							className={ classes.itemText }
 							primary={
 								<>
 									{ visited < created ? (<Badge color="secondary" badgeContent={'new'} classes={{ badge: classes.badge }}>
@@ -104,11 +147,12 @@ class WorkshopList extends React.Component {
 									<Typography component="span" className={classes.workshopDescription}>
 										{ workshop.short_description }
 									</Typography>
+									{ seats[workshopId] ? (<ShortSeats {...seats[workshopId]} />) : ('') }
 								</>
 							}
 						/>
 						<ListItemSecondaryAction className={classes.seats}>
-							{ seats[workshopId] ? (<Seats {...seats[workshopId]} />) : ('') }
+							{ seats[workshopId] ? (<Seats {...seats[workshopId]} className={ classes.seats } />) : ('') }
 						</ListItemSecondaryAction>
 					</ListItem>)
 				})

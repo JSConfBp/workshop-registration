@@ -26,50 +26,32 @@ const classes = theme => ({
 		margin: '0 auto',
 		marginTop: theme.spacing.unit * 5,
 		marginBottom: theme.spacing.unit * 5,
+		[theme.breakpoints.down('sm')]: {
+			width: '100vw',
+			marginTop: theme.spacing.unit * 3,
+			marginBottom: theme.spacing.unit * 3,
+		}
 	}),
 	title: {
 		marginBottom: theme.spacing.unit * 3,
 		lineHeight: '5rem',
+		[theme.breakpoints.down('sm')]: {
+			fontSize: '2rem',
+			lineHeight: '2.3rem',
+			marginBottom: theme.spacing.unit * 1,
+		}
 	},
 	area: {
 		textAlign: 'left',
 		margin: '0 auto',
 		marginTop: '4rem',
-		//maxWidth: '42rem',
 		padding: '2rem',
+		[theme.breakpoints.down('sm')]: {
+			padding: '1rem',
+			marginTop: '2rem',
+		}
 	},
 	text: {
-		marginBottom: '1rem',
-	},
-	mistake: {
-		marginTop: '2rem',
-	},
-	textField: {
-		marginBottom: '2rem',
-	},
-	ticketIdLink: {
-		display: 'inline-block',
-		paddingLeft: '1rem'
-	},
-	modal: {
-		width: theme.spacing.unit * 50,
-		backgroundColor: theme.palette.background.paper,
-		padding: theme.spacing.unit * 4,
-	},
-	retry: {
-		marginTop: '-1rem',
-		marginBottom: '1rem',
-	},
-	card: {
-		position: 'absolute',
-		outline: 'none',
-		width: theme.spacing.unit * 50,
-		boxShadow: theme.shadows[5],
-		left: '50%',
-		top: '50%',
-		transform: 'translate(-50%, -50%)',
-	},
-	helpText: {
 		marginBottom: '1rem',
 	},
 	media: {
@@ -77,8 +59,19 @@ const classes = theme => ({
 	},
 	resetArea: {
 		paddingTop: theme.spacing.unit * 8,
-		textAlign: 'center'
+		textAlign: 'center',
+		[theme.breakpoints.down('sm')]: {
+			paddingTop: theme.spacing.unit * 4,
+		}
 	},
+	ticketId: {
+		whiteSpace: 'nowrap'
+	},
+	divider: {
+		[theme.breakpoints.down('sm')]: {
+			margin: 0
+		}
+	}
 });
 
 
@@ -204,7 +197,8 @@ class Workshops extends React.Component {
 
 					<Paper className={classes.area} elevation={1}>
 						<Typography variant="h5" className={classes.text}>
-							Great to see you {user.ticketId}!
+							Great to see you <span className={classes.ticketId}>
+							{user.ticketId}!</span>
 						</Typography>
 
 						<Typography component="p" className={classes.text}>
@@ -221,7 +215,7 @@ class Workshops extends React.Component {
 							lastVisitedAt={user.updatedAt}
 						/>
 
-						<Divider variant="middle" />
+						<Divider className={classes.divider} variant="middle" />
 
 						<div className={classes.resetArea}>
 							<Button
@@ -242,7 +236,7 @@ class Workshops extends React.Component {
 					horizontal: 'center',
 				}}
 				open={this.state.saved}
-				autoHideDuration={3000}
+				autoHideDuration={1500}
 				onClose={e => this.closeNotification()}
 			>
 				<Notification

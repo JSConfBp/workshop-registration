@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import Tooltip from '@material-ui/core/Tooltip';
 
 const styles = theme => ({
 	seats: {
@@ -32,7 +33,7 @@ class Seats extends React.Component {
 	};
 
 	render() {
-		const { classes, seats = 0, taken = 0 } = this.props;
+		const { classes, className, seats = 0, taken = 0 } = this.props;
 
 		let value = 0
 
@@ -40,10 +41,13 @@ class Seats extends React.Component {
 			value = Math.round((taken / seats) * 100)
 		}
 
-	  return (<div className={classes.seats}>
-				<CircularProgress color={ classes.value > 75 ? 'primary' : 'secondary'} className={classes.value} variant="static" value={ value } size={'3rem'} />
-		  	<CircularProgress className={classes.bg} variant="static" value={100} size={'3rem'} />
-		</div>);
+	  return (
+			<Tooltip className={className} title={`Seats ${seats} / ${taken}`}>
+				<div className={classes.seats}>
+					<CircularProgress color={ classes.value > 75 ? 'primary' : 'secondary'} className={classes.value} variant="static" value={ value } size={'3rem'} />
+		  		<CircularProgress className={classes.bg} variant="static" value={100} size={'3rem'} />
+				</div>
+      </Tooltip>);
 	}
 }
 
