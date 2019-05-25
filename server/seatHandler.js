@@ -3,7 +3,7 @@ const workshopData = require('../workshops')
 
 module.exports.get = async (req, res) => {
 
-	const userIds = await store.hgetall('users')
+	const userIds = (await store.hgetall('users')) || {}
 
 	const pickedWorkshops = Object.values(userIds)
 		.map(value => JSON.parse(value))

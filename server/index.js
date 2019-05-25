@@ -2,6 +2,7 @@ const next = require('next')
 const express = require('express')
 const cookieParser = require('cookie-parser')
 const routeCache = require('route-cache');
+const cors = require('cors')
 
 const router = require('./router')
 const errorHandler = require('./errorHandler')
@@ -35,7 +36,8 @@ module.exports = function (getRoutes, config) {
 		server.get('/api/user', userHandler.get)
 		server.post('/api/user', userHandler.post)
 		server.delete('/api/user', userHandler.delete)
-		server.get('/api/seats', routeCache.cacheSeconds(60), seatHandler.get)
+
+		server.get('/api/seats', cors(), routeCache.cacheSeconds(60), seatHandler.get)
 		return server
 	}
 
