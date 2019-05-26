@@ -121,11 +121,13 @@ class WorkshopList extends React.Component {
 
 					const selectedItemClass = (selectedWorkshop === workshopId) ? classes.selected : '';
 					const lastItemClass = (allItems.length - 1 === index) ? classes.lastItem : ''
+					const disabled = seats[workshopId] && seats[workshopId].seats === seats[workshopId].taken;
 
 					return (<ListItem
 						key={`ws-${index}`}
 						role={undefined}
 						button
+						disabled={disabled}
 						className={classNames(classes.item, selectedItemClass, lastItemClass)}
 						onClick={() => this.onWorkshopSelect(workshopId) }
 					>
