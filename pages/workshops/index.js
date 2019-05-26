@@ -13,6 +13,7 @@ import WorkshopList from '../../components/WorkshopList'
 
 const successMessage = 'Your selection was saved';
 const warningMessage = 'Sorry, there was an error saving your selection. Try again later, or contact us';
+const fullMessage = 'Sorry, but that workshop is full, please choose another one';
 
 const classes = theme => ({
 	root: {
@@ -119,9 +120,7 @@ class Workshops extends React.Component {
 	}
 
 	async onWorkshopSelect (workshop) {
-		this.setState({
-			selectedWorkshop: workshop
-		})
+
 
 		try {
 			await fetch(
@@ -136,13 +135,17 @@ class Workshops extends React.Component {
 					})
 				}
 			).then(response => {
+				if (response.status === 409){
+					throw new Error(fullMessage)
+				}
+
 				if (response.status !== 200) throw new Error(warningMessage)
 			})
 			this.setState({
 				saved: true,
 				saveState: 'success',
+				selectedWorkshop: workshop
 			})
-			this.fetchSeats()
 		} catch(e) {
 			this.setState({
 				saved: true,
@@ -150,6 +153,7 @@ class Workshops extends React.Component {
 				saveMessage: e.message || warningMessage
 			})
 		}
+		this.fetchSeats()
 	}
 
 	async onUnregister () {

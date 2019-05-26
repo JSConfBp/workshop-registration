@@ -1,6 +1,11 @@
 const moment = require('moment')
 const store = require('./store')
 const getUserData = require('./getUserData')
+const getSeats = require('./getSeats')
+
+const isWorkshopFull = (workshop) => {
+	return (workshop.seats - workshop.taken) < 1
+}
 
 module.exports.get = async (req, res) => {
 	let {
@@ -51,6 +56,13 @@ module.exports.post = async (req, res) => {
 
 		if (!workshop) {
 			throw new Error('Missing workshop ID')
+		}
+
+		const seats = await getSeats()
+
+		if (isWorkshopFull(seats[workshop])) {
+			res.status(409)
+			res.send("Workshop is full, sorry, pick another one.")
 		}
 
 		const saveData = Object.assign({}, data, {
