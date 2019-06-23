@@ -67,7 +67,19 @@ const classes = theme => ({
 	badge: {
 		marginTop: '2rem',
 		marginRight: '2rem',
-		padding: '0 .7rem'
+		padding: '0 .7rem',
+		[theme.breakpoints.down('sm')]: {
+			marginRight: '-2rem',
+			marginTop: '1.7rem'
+		}
+	},
+	comingSoonBadge: {
+		backgroundColor: 'gray',
+		marginRight: '0rem',
+		[theme.breakpoints.down('sm')]: {
+			marginRight: '-4rem',
+			marginTop: '1.7rem'
+		}
 	},
 	seats: {
 		[theme.breakpoints.down('sm')]: {
@@ -119,9 +131,12 @@ class WorkshopList extends React.Component {
 						{ workshop.title }
 					</Typography>)
 
-					const selectedItemClass = (selectedWorkshop === workshopId) ? classes.selected : '';
+					const selectedItemClass = (selectedWorkshop === workshopId) ? classes.selected : ''
 					const lastItemClass = (allItems.length - 1 === index) ? classes.lastItem : ''
-					const disabled = seats[workshopId] && seats[workshopId].seats === seats[workshopId].taken;
+					const isFull = (seats[workshopId] && seats[workshopId].seats === seats[workshopId].taken)
+					const disabled = workshop.coming_soon || isFull
+					const comingSoon = workshop.coming_soon
+					const newWorkshop = visited < created
 
 					return (<ListItem
 						key={`ws-${index}`}
@@ -139,9 +154,15 @@ class WorkshopList extends React.Component {
 							className={ classes.itemText }
 							primary={
 								<>
-									{ visited < created ? (<Badge color="secondary" badgeContent={'new'} classes={{ badge: classes.badge }}>
+									{ comingSoon ? (<Badge color="primary" badgeContent={'Coming soon!'} classes={{
+										badge: classes.badge,
+										colorPrimary: classes.comingSoonBadge
+									}}>
 										{title}
-									</Badge>) : (title)}
+									</Badge>) : (newWorkshop ? (<Badge color="secondary" badgeContent={'new'} classes={{ badge: classes.badge }}>
+										{title}
+									</Badge>) : (title))}
+
 								</>
 							}
 							secondary={
