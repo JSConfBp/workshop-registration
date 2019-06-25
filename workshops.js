@@ -23,11 +23,11 @@ module.exports = {
 		title: "Let's jump on the JAMStack hype-train",
 		short_description: "Nowadays JAMStack is becoming more and more popular in JavaScript community. Join us and find out what does the JAMStack means while building an e-commerce site with Gatsby and a Headless CMS.",
 	},
-	// MICROSOFT: {
-	// 	coming_soon: true,
-	// 	//created: "2019-06-06",
-	// 	seats: 30, // 30
-	// 	title: "Serverless GraphQL with MS Azure",
-	// 	short_description: "Learn how to Build a Serverless GraphQL API, using Node.js, Docker and Azure Serverless functions!",
-	// },
+	MICROSOFT: {
+		coming_soon: true,
+		//created: "2019-06-06",
+		seats: 30, // 30
+		title: "Serverless GraphQL with MS Azure",
+		short_description: "Learn how to Build a Serverless GraphQL API, using Node.js, Docker and Azure Serverless functions!",
+	},
 }
