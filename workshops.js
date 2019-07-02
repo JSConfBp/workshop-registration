@@ -1,7 +1,7 @@
 module.exports = {
 	RISINGSTACK: {
 		created: "2019-05-17",
-		seats: 10, // 10
+		seats: 15, // 15
 		title: "High-Performance Microservices with GraphQL and Apollo",
 		short_description: "The attendees of this workshop are going to become more familiar with Apollo, both on the client and server side, and will learn how to implement both sides of a GraphQL server.",
 	},
