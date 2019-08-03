@@ -9,7 +9,7 @@ module.exports = {
 		created: "2019-05-17",
 		seats: 20, // 20
 		title: "Twilio Superclass",
-		short_description: "Superclass is hands-on training for developers to learn how to use all things Twilio. Our engineers will be on hand to help as you work through code challenges in TwilioQuest, our self-paced training video game. There will be 8-bit music, prices and lot's of phone calls!",
+		short_description: "Superclass is hands-on training for developers to learn how to use all things communication using Twilio. Our engineers will guide you through the process of implementing messaging via WhatsApp and email. We will implement real-time features like chat and video, and glue all these things together in a single website using serverless functions.",
 	},
 	UNMOCKIO: {
 		created: "2019-05-17",
@@ -28,5 +28,11 @@ module.exports = {
 		seats: 50,
 		title: "Serverless GraphQL with MS Azure",
 		short_description: "Learn how to Build a Serverless GraphQL API, using Node.js, Docker and Azure Serverless functions!",
+	},
+	BONOMI: {
+		seats: 20,
+		title: "How to build an AI chatbot on Facebook Messenger",
+		short_description: "Now that the big hype around chatbots is over, it is time that the technology becomes useful in our everyday lives. Research shows that in certain countries, people already prefer talking to a chatbot rather than to a human agent. Come and join the lead developer of Bonomi who will help you build an application on the Messenger Platform that can respond to text input as intelligently as possible. Keywords: Typescript, Nodejs, Express, NLP, AI",
+		coming_soon: true,
 	},
 }
