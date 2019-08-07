@@ -36,4 +36,11 @@ module.exports = {
 		short_description: "Now that the big hype around chatbots is over, it is time that the technology becomes useful in our everyday lives. Research shows that in certain countries, people already prefer talking to a chatbot rather than to a human agent. Come and join the lead developer of Bonomi who will help you build an application on the Messenger Platform that can respond to text input as intelligently as possible. Keywords: Typescript, Nodejs, Express, NLP, AI",
 		coming_soon: true,
 	},
+	MITO: {
+		// created: "2019-08-03",
+		seats: 15,
+		title: "JavaScript Testing",
+		short_description: "During this crash course, you will learn the basics of testing in JavaScript: how to write testable code, unit tests and automated tests with the Cypress end to end testing framework.",
+		coming_soon: true,
+	},
 }
