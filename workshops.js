@@ -41,4 +41,11 @@ module.exports = {
 		title: "JavaScript Testing",
 		short_description: "During this crash course, you will learn the basics of testing in JavaScript: how to write testable code, unit tests and automated tests with the Cypress end to end testing framework.",
 	},
+	VACUUMLABS: {
+		//created: "2019-08-25",
+		coming_soon: true,
+		seats: 15,
+		title: "Reason: React and GraphQL",
+		short_description: "Join the ReasonML workshop powered by Vacuumlabs. We will build a real-world app using Reason language with the help of React and GraphQL.",
+	},
 }
