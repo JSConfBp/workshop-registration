@@ -43,7 +43,6 @@ module.exports = {
 	},
 	VACUUMLABS: {
 		created: "2019-08-25",
-		//coming_soon: true,
 		seats: 15,
 		title: "Reason: React and GraphQL",
 		short_description: "Join the ReasonML workshop powered by Vacuumlabs. We will build a real-world app using Reason language with the help of React and GraphQL.",
