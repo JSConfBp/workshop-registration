@@ -7,7 +7,7 @@ module.exports = {
 	},
 	TWILIO: {
 		created: "2019-05-17",
-		seats: 20, // 20
+		seats: 14, // 14
 		title: "Twilio Superclass",
 		short_description: "Superclass is hands-on training for developers to learn how to use all things communication using Twilio. Our engineers will guide you through the process of implementing messaging via WhatsApp and email. We will implement real-time features like chat and video, and glue all these things together in a single website using serverless functions.",
 	},
