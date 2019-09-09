@@ -31,7 +31,7 @@ module.exports = {
 	},
 	BONOMI: {
 		created: "2019-08-12",
-		seats: 20,
+		seats: 10,
 		title: "How to build an AI chatbot on Facebook Messenger",
 		short_description: "Now that the big hype around chatbots is over, it is time that the technology becomes useful in our everyday lives. Research shows that in certain countries, people already prefer talking to a chatbot rather than to a human agent. Come and join the lead developer of Bonomi who will help you build an application on the Messenger Platform that can respond to text input as intelligently as possible. Keywords: Typescript, Nodejs, Express, NLP, AI",
 	},
