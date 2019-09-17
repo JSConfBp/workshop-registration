@@ -9,6 +9,7 @@ const errorHandler = require('./errorHandler')
 const loginHandler = require('./loginHandler')
 const userHandler = require('./userHandler')
 const seatHandler = require('./seatHandler')
+const workshopHandler = require('./workshopHandler')
 
 const dev = process.env.NODE_ENV !== 'production'
 
@@ -36,6 +37,8 @@ module.exports = function (getRoutes, config) {
 		server.get('/api/user', userHandler.get)
 		server.post('/api/user', userHandler.post)
 		server.delete('/api/user', userHandler.delete)
+
+		server.get('/api/workshops', workshopHandler.get)
 
 		server.get('/api/seats', cors(), routeCache.cacheSeconds(60), seatHandler.get)
 		return server
