@@ -5,11 +5,11 @@ const VALID_TOKEN = process.env.ADMINTOKEN
 
 module.exports.get = async (req, res) => {
 	let {
-		adminToken
+		admintoken
 	} = req.headers
 
 
-	if (!adminToken || adminToken !== VALID_TOKEN) {
+	if (!admintoken || admintoken !== VALID_TOKEN) {
 		res.sendStatus(403)
 		return
 	}
