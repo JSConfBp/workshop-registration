@@ -134,7 +134,7 @@ class WorkshopList extends React.Component {
 					const selectedItemClass = (selectedWorkshop === workshopId) ? classes.selected : ''
 					const lastItemClass = (allItems.length - 1 === index) ? classes.lastItem : ''
 					const isFull = (seats[workshopId] && seats[workshopId].seats === seats[workshopId].taken)
-					const disabled = workshop.coming_soon || isFull
+					const disabled = workshop.closed || workshop.coming_soon || isFull
 					const comingSoon = workshop.coming_soon
 					const newWorkshop = visited < created
 
