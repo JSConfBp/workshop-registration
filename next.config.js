@@ -1,7 +1,6 @@
-const withTM = require('@weco/next-plugin-transpile-modules')
 const sass = require('@zeit/next-sass')
 const routing = require('./routing')
-const withPlugins = require('next-compose-plugins');
+const withPlugins = require('next-compose-plugins')
 
 const sassConfig = {
 	cssModules: false,
@@ -27,6 +26,6 @@ const nextConfig = {
 
 const c = withPlugins([
 	[sass, sassConfig],
-  ], nextConfig);
+  ], nextConfig)
 
 module.exports = c('', {})

@@ -205,11 +205,11 @@ class Workshops extends React.Component {
 						<Typography component="p" className={classes.text}>
 
 
-							Registration for the 2019 workshops are closed, sorry!
+							{/* Registration for the 2019 workshops are closed, sorry! */}
 
-							{/* Here are the current list of workshops available. You can pick one, or update your preferred
+							Here are the current list of workshops available. You can pick one, or update your preferred
 							workshop and choose another one, if there are enough seats. Workshops marked with "NEW" were added to the
-							conference since your last visit here. */}
+							conference since your last visit here.
 
 						</Typography>
 
@@ -223,7 +223,7 @@ class Workshops extends React.Component {
 
 						<Divider className={classes.divider} variant="middle" />
 
-						{/* <div className={classes.resetArea}>
+						<div className={classes.resetArea}>
 							<Button
 								variant="outlined"
 								className={classes.button}
@@ -231,7 +231,7 @@ class Workshops extends React.Component {
 							>
 								Reset your selection, unregister from workshops
 							</Button>
-						</div> */}
+						</div>
 					</Paper>
 				</div>
 			</div>
