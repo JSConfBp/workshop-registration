@@ -17,7 +17,25 @@ Goals why we created this:
 Express / NextJS / React / Material UI
 
 - Deployed to Heroku, needs a Redis instance
-- Ticket Booking References are checked in the tito API, you'll need the API URL and an API Token
+- Ticket Booking References are checked in the tito API, you'll need the API URL and an API Token (see `.env.example`)
+- Set a large hash as `admintoken` to export registrations (see `.env.example`)
+
+## Export registrations
+
+Call the app using the `/api/workshops` endpoint, and passing an `admintoken` header with the same large random hash you've set as an ENV var during setup.
+
+```
+curl --request GET 'https://0.0.0.0/api/workshops' \
+--header 'admintoken: aaaBBBccc11122233'
+```
+
+Default output is JSON, but if you set `Content-type` to `text/csv` it will export data as CSV.
+
+```
+curl --request GET 'https://0.0.0.0/api/workshops' \
+--header 'admintoken: aaaBBBccc11122233' \
+--header 'Content-Type: text/csv'
+```
 
 ## Development
 
