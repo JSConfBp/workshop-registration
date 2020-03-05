@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "predev": "docker-compose up -d",
-    "dev": "export NODE_ENV='development' ; nodemon index.js",
+    "dev": "export NODE_ENV=development ; nodemon index.js",
     "postdev": "docker-compose down",
     "clean": "rm -rf .next",
     "test": "echo \"Error: no test specified\" && exit 1",
