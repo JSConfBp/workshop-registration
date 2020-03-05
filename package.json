@@ -13,12 +13,15 @@
     "heroku-postbuild": "npm run build",
     "start": "node index.js"
   },
-  "author": "",
+  "author": "nec@jsconfbp.com",
   "license": "MIT",
   "devDependencies": {
     "dotenv": "^8.2.0",
     "nodemon": "^2.0.2",
     "redux-devtools-extension": "^2.13.8"
+  },
+  "engines": {
+    "node": "12.x"
   },
   "dependencies": {
     "@material-ui/core": "^4.9.5",
@@ -31,7 +34,6 @@
     "csv": "^5.1.2",
     "express": "^4.16.4",
     "form-data": "^3.0.0",
-    "hiredis": "^0.5.0",
     "isomorphic-unfetch": "^3.0.0",
     "jsrsasign": "^8.0.12",
     "jws": "^4.0.0",
