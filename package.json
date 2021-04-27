@@ -45,7 +45,7 @@
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "react-jss": "^10.0.4",
-    "redis": "^3.0.2",
+    "redis": "^3.1.1",
     "route-cache": "^0.4.4",
     "styled-jsx": "^3.2.1",
     "universal-cookie": "^4.0.0",
