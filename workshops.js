@@ -13,4 +13,11 @@ module.exports = {
 		title: "Build Your Own Synthetics Monitoring",
 		short_description: "Build your own synthetics monitoring test suite and learn how to anticipate user behavior, both in all the expected ways and in all the unexpected ways, and build automated solutions to test for it.",
 	},
+  EXADEL: {
+    closed: true,
+    created: "2022-03-25",
+    seats: 15,
+    title: "Mastering Node.js asynchronous flow",
+    short_description: "Become a master of async flows in Node.js from event loop queues to working threads!",
+  },
 }
