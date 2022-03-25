@@ -24,7 +24,7 @@ class MyApp extends App {
 
 	  return <>
 			<Head>
-				<title>Workshop Registration - JSConf Budapest 2019</title>
+				<title>Workshop Registration - JSConf Budapest 2022</title>
 			</Head>
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
