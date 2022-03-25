@@ -196,17 +196,17 @@ class Index extends React.Component {
 
 		<div className={classes.paper}>
 			<Typography className={classes.title} variant="h2">
-				JSConf Budapest 2019<br />
+				JSConf Budapest 2022<br />
 				Workshop Registration
 			</Typography>
 
 			<Paper className={classes.area} elevation={1}>
 				<Typography component="p" className={classes.text}>
-					Log in using your JSConf Budapest 2019 ticket ID.
+					Log in using your JSConf Budapest 2022 ticket ID.
 				</Typography>
 
 				<Typography component="p" className={classes.text}>
-					<a href="https://ti.to/jsconf-bp/jsconf-budapest-2019">I don't have a ticket</a>
+					<a href="https://ti.to/jsconf-bp/jsconf-budapest-2022">I don't have a ticket</a>
 					<a href="" className={classes.ticketIdLink} onClick={e => this.showHelp(e)}>Where is my ticket ID?</a>
 				</Typography>
 
@@ -231,7 +231,7 @@ class Index extends React.Component {
 							Sorry, but it seems we can't find your ticket. <br />
 							You can get one quickly by hitting the button below.
 						</Typography>
-						<Button variant="contained" color="primary" className={classes.button} href="https://ti.to/jsconf-bp/jsconf-budapest-2019">
+						<Button variant="contained" color="primary" className={classes.button} href="https://ti.to/jsconf-bp/jsconf-budapest-2022">
 							Buy your ticket from €311
 						</Button>
 						<Typography component="p" className={classes.mistake}>
