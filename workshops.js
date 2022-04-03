@@ -20,4 +20,11 @@ module.exports = {
     title: "Mastering Node.js asynchronous flow",
     short_description: "Become a master of async flows in Node.js from event loop queues to working threads!",
   },
+  HASURA: {
+    closed: true,
+    created: "2022-04-03",
+    seats: 15,
+    title: "Building realtime apps with GraphQL & Hasura",
+    short_description: "tba",
+  },
 }
