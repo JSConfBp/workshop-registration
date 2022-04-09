@@ -25,14 +25,14 @@ module.exports = {
     created: "2022-04-03",
     seats: 7,
     title: "Building realtime apps with GraphQL & Hasura",
-    short_description: "tba",
+    short_description: "Learn how GraphQL provides simpler ergonomics for working with real-time data! Then, using Hasura, an open-source engine, instantly generate a subscription-ready API for your application!",
   },
   SUPERCHARGE: {
     closed: true,
     created: "2022-04-09",
     seats: 10,
-    title: "Building realtime apps with GraphQL & Hasura",
-    short_description: "tba",
+    title: "How to tame drones using face recognition?",
+    short_description: "AI and IoT are not areas you should be afraid of! During our session, we’re going to learn how to convince drones to follow us everywhere, relying on face recognition.",
   },  
   
 }
