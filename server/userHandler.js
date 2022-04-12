@@ -59,7 +59,7 @@ module.exports.post = async (req, res) => {
 			throw new Error('Missing workshop ID')
 		}
 
-		if (workshops[workshop].coming_soon) {
+		if (workshops[workshop].coming_soon || workshops[workshop].closed) {
 			res.status(409)
 			res.send('This workshop is not available at the moment')
 			return
