@@ -1,6 +1,7 @@
 module.exports = {
 	XSTATE: {
 		closed: true,
+    coming_soon: true,
 		created: "2022-03-22",
 		seats: 7,
 		title: "Diagram, Develop, Deploy: Build bulletproof apps collaboratively with statecharts",
@@ -8,6 +9,7 @@ module.exports = {
 	},
 	NEWRELIC: {
 		closed: true,
+    coming_soon: true,
 		created: "2022-03-22",
 		seats: 7,
 		title: "Build Your Own Synthetics Monitoring",
@@ -15,6 +17,7 @@ module.exports = {
 	},
   EXADEL: {
     closed: true,
+    coming_soon: true,
     created: "2022-03-25",
     seats: 7,
     title: "Mastering Node.js asynchronous flow",
@@ -22,6 +25,7 @@ module.exports = {
   },
   HASURA: {
     closed: true,
+    coming_soon: true,
     created: "2022-04-03",
     seats: 7,
     title: "Building realtime apps with GraphQL & Hasura",
@@ -29,6 +33,7 @@ module.exports = {
   },
   SUPERCHARGE: {
     closed: true,
+    coming_soon: true,
     created: "2022-04-09",
     seats: 10,
     title: "How to tame drones using face recognition?",
