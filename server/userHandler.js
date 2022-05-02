@@ -70,6 +70,7 @@ module.exports.post = async (req, res) => {
 		if (isWorkshopFull(seats[workshop])) {
 			res.status(409)
 			res.send('Sorry, but that workshop is full, please choose another one')
+			return
 		}
 
 		const saveData = Object.assign({}, data, {
