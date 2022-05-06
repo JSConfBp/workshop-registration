@@ -29,5 +29,11 @@ module.exports = {
     title: "How to tame drones using face recognition?",
     short_description: "AI and IoT are not areas you should be afraid of! During our session, we’re going to learn how to convince drones to follow us everywhere, relying on face recognition.",
   },  
-  
+  LITTLEDATA: {
+    coming_soon: true,
+    created: "2022-05-06",
+    seats: 7,
+    title: "Handing technical debt in a fast-scaling software company",
+    short_description: "Engineering leads from Littledata talk through how they have tackled scaling challenges and tech debt, covering object-oriented design, serverless architecture, Kubernetes and dependency injection.",
+  },
 }
