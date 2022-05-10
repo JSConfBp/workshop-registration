@@ -30,7 +30,6 @@ module.exports = {
     short_description: "AI and IoT are not areas you should be afraid of! During our session, we’re going to learn how to convince drones to follow us everywhere, relying on face recognition.",
   },  
   LITTLEDATA: {
-    coming_soon: true,
     created: "2022-05-06",
     seats: 7,
     title: "Handing technical debt in a fast-scaling software company",
