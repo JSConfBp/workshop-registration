@@ -31,7 +31,7 @@ module.exports = {
   },  
   LITTLEDATA: {
     created: "2022-05-06",
-    seats: 7,
+    seats: 19,
     title: "Handing technical debt in a fast-scaling software company",
     short_description: "Engineering leads from Littledata talk through how they have tackled scaling challenges and tech debt, covering object-oriented design, serverless architecture, Kubernetes and dependency injection.",
   },
