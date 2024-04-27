@@ -1,38 +1,26 @@
 module.exports = {
-	XSTATE: {
-		created: "2022-03-22",
-		seats: 15,
-		title: "Diagram, Develop, Deploy: Build bulletproof apps collaboratively with statecharts",
-		short_description: "Using XState, the attendees of this workshop will learn how to model any piece of code using states, events, actions and services.",
+	RISINGSTACK: {
+		created: "2024-04-22",
+		seats: 20,
+		title: "AHA stack: Make web development easy again!",
+		short_description: "Meet the AHA stack, combining Astro, htmx, and Alpine.js to deliver rich, interactive sites in a surprisingly easy way.",
 	},
-	NEWRELIC: {
-		created: "2022-03-22",
-		seats: 15,
-		title: "Build Your Own Synthetics Monitoring",
-		short_description: "Build your own synthetics monitoring test suite and learn how to anticipate user behavior, both in all the expected ways and in all the unexpected ways, and build automated solutions to test for it.",
+	SUPERCHARGE: {
+		created: "2022-04-26",
+		seats: 25,
+		title: "API-first approach with no-code stack for fullstack development",
+		short_description: "Learn the principles of the API-first approach, and how to implement API contracts using ChatGPT or Copilot and GitLab CI.",
 	},
-  EXADEL: {
-    created: "2022-03-25",
-    seats: 12,
-    title: "Mastering Node.js asynchronous flow",
-    short_description: "Become a master of async flows in Node.js from event loop queues to working threads!",
-  },
-  HASURA: {
-    created: "2022-04-03",
-    seats: 15,
-    title: "Building realtime apps with GraphQL & Hasura",
-    short_description: "Learn how GraphQL provides simpler ergonomics for working with real-time data! Then, using Hasura, an open-source engine, instantly generate a subscription-ready API for your application!",
-  },
-  SUPERCHARGE: {
-    created: "2022-04-09",
+  CRABNEBULA: {
+    created: "2022-05-05",
     seats: 20,
-    title: "How to tame drones using face recognition?",
-    short_description: "AI and IoT are not areas you should be afraid of! During our session, we’re going to learn how to convince drones to follow us everywhere, relying on face recognition.",
-  },  
-  LITTLEDATA: {
-    created: "2022-05-06",
-    seats: 19,
-    title: "Handing technical debt in a fast-scaling software company",
-    short_description: "Engineering leads from Littledata talk through how they have tackled scaling challenges and tech debt, covering object-oriented design, serverless architecture, Kubernetes and dependency injection.",
+    title: "Learn Tauri 2.0",
+    short_description: "Tauri is a framework for building tiny, blazing fast binaries for all major desktop platforms.",
+  },
+  MAINMATTER: {
+    created: "2022-05-15",
+    seats: 15,
+    title: "Building with Svelte & SvelteKit",
+    short_description: "TBA",
   },
 }
