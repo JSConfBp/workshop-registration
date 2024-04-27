@@ -192,7 +192,7 @@ class Workshops extends React.Component {
 			<div className={classes.root}>
 				<div className={classes.paper}>
 					<Typography className={classes.title} variant="h2">
-						JSConf Budapest 2022<br />
+						JSConf Budapest 2024<br />
 						Workshop Registration
 					</Typography>
 
