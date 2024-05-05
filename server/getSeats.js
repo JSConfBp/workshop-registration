@@ -11,7 +11,8 @@ module.exports = async () => {
 	const initialSeatMap = Object.entries(workshopData).reduce((obj, [id, ws]) => {
 		obj[id] = {
 			seats: ws.seats,
-			taken: 0
+			taken: 0,
+      open: !ws.coming_soon,
 		}
 		return obj
 	},{})
