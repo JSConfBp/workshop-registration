@@ -13,12 +13,14 @@ module.exports = {
 		title: "API-first approach with no-code stack for fullstack development",
 		short_description: "Learn the principles of the API-first approach, and how to implement API contracts using ChatGPT or Copilot and GitLab CI.",
 	},
-  /* CRABNEBULA: {
-    created: "2022-05-05",
-    seats: 20,
-    title: "Learn Tauri 2.0",
-    short_description: "Tauri is a framework for building tiny, blazing fast binaries for all major desktop platforms.",
+  CRABNEBULA: {
+    created: "2022-05-14",
+    seats: 10,
+    coming_soon: true,
+    title: "Tauri: Build, Debug, and Ship a Desktop App with Web Tech",
+    short_description: "Create a Desktop application with our web framework of choice using Tauri.",
   },
+  /*
   MAINMATTER: {
     created: "2022-05-15",
     seats: 15,
