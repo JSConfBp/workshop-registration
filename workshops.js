@@ -8,7 +8,7 @@ module.exports = {
 	},
 	SUPERCHARGE: {
 		created: "2022-04-26",
-		seats: 18, // max 25
+		seats: 25, // max 25
     coming_soon: false,
 		title: "API-first approach with no-code stack for fullstack development",
 		short_description: "Learn the principles of the API-first approach, and how to implement API contracts using ChatGPT or Copilot and GitLab CI.",
