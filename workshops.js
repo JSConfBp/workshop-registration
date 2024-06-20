@@ -15,7 +15,7 @@ module.exports = {
 	},
   CRABNEBULA: {
     created: "2022-05-14",
-    seats: 10,
+    seats: 20,
     coming_soon: false,
     title: "Tauri: Build, Debug, and Ship a Desktop App with Web Tech",
     short_description: "Create a Desktop application with our web framework of choice using Tauri.",
